@@ -76,7 +76,7 @@ add_action('plugins_loaded', function () {
         add_action('admin_notices', function () {
             echo '<div class="error"><p>';
             printf(__('%s requires Jigoshop plugin to be active. Code for plugin %s was not loaded.',
-                'plugin_textdomain'), JIGOSHOP_PLUGIN_NAME_NAME);
+                'plugin_textdomain'), JIGOSHOP_PLUGIN_NAME_NAME, JIGOSHOP_PLUGIN_NAME_NAME);
             echo '</p></div>';
         });
     }
