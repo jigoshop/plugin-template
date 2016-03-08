@@ -6,14 +6,10 @@
  * Version: 1.0
  * Author: Jigoshop
  * Author URI: https://www.jigoshop.com/
- * Init File Version: 1.0
- * Init File Date: 2015-10-07
+ * Init File Version: 1.1
+ * Init File Date: 08.03.2016
  */
 
-// Define plugin directory for inclusions
-if (!defined('JIGOSHOP_PLUGIN_NAME_DIR')) {
-    define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__));
-}
 // Define plugin URL for assets
 if (!defined('JIGOSHOP_PLUGIN_NAME_URL')) {
     define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__));
@@ -38,6 +34,11 @@ add_action('plugins_loaded', function () {
             return;
         }
 
+        // Define plugin directory for inclusions
+        if (!defined('JIGOSHOP_PLUGIN_NAME_DIR')) {
+            define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__));
+        }
+
         //Init components.
         require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/PluginName.common.php');
         if (is_admin()) {
@@ -58,12 +59,17 @@ add_action('plugins_loaded', function () {
             return;
         }
 
+        // Define plugin directory for inclusions
+        if (!defined('JIGOSHOP_PLUGIN_NAME_DIR')) {
+            define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__) . '/Jigoshop1x');
+        }
+
         //Init components.
-        require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/PluginName-1x.common.php');
+        require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/to/plugin/common/code.php');
         if (is_admin()) {
-            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/PluginName-1x.backend.php');
+            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/to/plugin/backend/code.php');
         } else {
-            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/PluginName-1x.frontend.php');
+            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/to/plugin/front/code.php');
         }
 
     } else {
@@ -76,6 +82,7 @@ add_action('plugins_loaded', function () {
     }
 });
 
+// this code need to be moved to the initial admin class
 if (is_admin()) {
     add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($links) {
         $links[] = '<a href="https://www.jigoshop.com/documentation/plugin_name" target="_blank">Documentation</a>';
