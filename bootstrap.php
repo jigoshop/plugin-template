@@ -6,14 +6,10 @@
  * Version: 1.0
  * Author: Jigoshop
  * Author URI: https://www.jigoshop.com/
- * Init File Version: 1.1
- * Init File Date: 08.03.2016
+ * Init File Version: 1.2
+ * Init File Date: 10.03.2016
  */
 
-// Define plugin URL for assets
-if (!defined('JIGOSHOP_PLUGIN_NAME_URL')) {
-    define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__));
-}
 // Define plugin name
 if (!defined('JIGOSHOP_PLUGIN_NAME_NAME')) {
     define('JIGOSHOP_PLUGIN_NAME_NAME', 'Plugin Name');
@@ -39,12 +35,17 @@ add_action('plugins_loaded', function () {
             define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__));
         }
 
+        // Define plugin URL for assets
+        if (!defined('JIGOSHOP_PLUGIN_NAME_URL')) {
+            define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__));
+        }
+
         //Init components.
-        require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/PluginName.common.php');
+        require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/Jigoshop/Extension/PluginName/common.php');
         if (is_admin()) {
-            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/PluginName.backend.php');
+            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/Jigoshop/Extension/PluginName/backend.php');
         } else {
-            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/PluginName.frontend.php');
+            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/Jigoshop/Extension/PluginName/frontend.php');
         }
 
     } elseif (class_exists('jigoshop')) {
@@ -64,12 +65,17 @@ add_action('plugins_loaded', function () {
             define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__) . '/Jigoshop1x');
         }
 
+        // Define plugin URL for assets
+        if (!defined('JIGOSHOP_PLUGIN_NAME_URL')) {
+            define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__) . '/Jigoshop1x');
+        }
+
         //Init components.
-        require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/to/plugin/common/code.php');
+        require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/Jigoshop1x/src/to/plugin/common/code.php');
         if (is_admin()) {
-            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/to/plugin/backend/code.php');
+            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/Jigoshop1x/src/to/plugin/backend/code.php');
         } else {
-            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/to/plugin/front/code.php');
+            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/Jigoshop1x/src/to/plugin/front/code.php');
         }
 
     } else {
