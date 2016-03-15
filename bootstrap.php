@@ -11,9 +11,7 @@
  */
 
 // Define plugin name
-if (!defined('JIGOSHOP_PLUGIN_NAME_NAME')) {
-    define('JIGOSHOP_PLUGIN_NAME_NAME', 'Plugin Name');
-}
+define('JIGOSHOP_PLUGIN_NAME_NAME', 'Plugin Name');
 
 add_action('plugins_loaded', function () {
     load_plugin_textdomain('plugin_textdomain', false, dirname(plugin_basename(__FILE__)) . '/languages/');
@@ -31,14 +29,10 @@ add_action('plugins_loaded', function () {
         }
 
         // Define plugin directory for inclusions
-        if (!defined('JIGOSHOP_PLUGIN_NAME_DIR')) {
-            define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__));
-        }
+        define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__));
 
         // Define plugin URL for assets
-        if (!defined('JIGOSHOP_PLUGIN_NAME_URL')) {
-            define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__));
-        }
+        define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__));
 
         //Init components.
         require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/Jigoshop/Extension/PluginName/common.php');
@@ -61,14 +55,10 @@ add_action('plugins_loaded', function () {
         }
 
         // Define plugin directory for inclusions
-        if (!defined('JIGOSHOP_PLUGIN_NAME_DIR')) {
-            define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__) . '/Jigoshop1x');
-        }
+        define('JIGOSHOP_PLUGIN_NAME_DIR', dirname(__FILE__) . '/Jigoshop1x');
 
         // Define plugin URL for assets
-        if (!defined('JIGOSHOP_PLUGIN_NAME_URL')) {
-            define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__) . '/Jigoshop1x');
-        }
+        define('JIGOSHOP_PLUGIN_NAME_URL', plugins_url('', __FILE__) . '/Jigoshop1x');
 
         //Init components.
         require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/Jigoshop1x/src/to/plugin/common/code.php');
