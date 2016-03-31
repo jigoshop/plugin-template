@@ -2,8 +2,4 @@
 
 ### Usage
 
-* Replace all `PLUGIN_MAME` in constants.
-* Replace all `PluginName` in file paths.
-* Change plugin textdomain.
-* Change product id in license validaros, or remove them completely.
-* Change documentation url.
+* Add this as file template in php storm settings.
