@@ -7,13 +7,13 @@
  * Version: 1.0
  * Author: Jigoshop
  * Author URI: https://www.jigoshop.com/
- * Init File Version: 1.2
- * Init File Date: 10.03.2016
+ * Init File Version: 1.3
+ * Init File Date: 01.04.2016
  */
 // Define plugin name
 define('JIGOSHOP_${CONST_NAME}_NAME', '${PLUGIN_NAME}');
 add_action('plugins_loaded', function () {
-    load_plugin_textdomain('plugin_textdomain', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+    load_plugin_textdomain('${textdomain}', false, dirname(plugin_basename(__FILE__)) . '/languages/');
     if (class_exists('\Jigoshop\Core')) {
         //Check version.
         if (\Jigoshop\addRequiredVersionNotice(JIGOSHOP_${CONST_NAME}_NAME, '2.0')) {
@@ -29,11 +29,11 @@ add_action('plugins_loaded', function () {
         // Define plugin URL for assets
         define('JIGOSHOP_${CONST_NAME}_URL', plugins_url('', __FILE__));
         //Init components.
-        require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/common.php');
+        require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/Common.php');
         if (is_admin()) {
-            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/backend.php');
+            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/Admin.php');
         } else {
-            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/frontend.php');
+            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/Frontend.php');
         }
     } elseif (class_exists('jigoshop')) {
         //Check version.
@@ -50,12 +50,7 @@ add_action('plugins_loaded', function () {
         // Define plugin URL for assets
         define('JIGOSHOP_${CONST_NAME}_URL', plugins_url('', __FILE__) . '/Jigoshop1x');
         //Init components.
-        require_once(JIGOSHOP_${CONST_NAME}_DIR . '/Jigoshop1x/src/to/plugin/common/code.php');
-        if (is_admin()) {
-            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/Jigoshop1x/src/to/plugin/backend/code.php');
-        } else {
-            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/Jigoshop1x/src/to/plugin/front/code.php');
-        }
+        require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/to/old/plugin/start/file.php');
     } else {
         add_action('admin_notices', function () {
             echo '<div class="error"><p>';
