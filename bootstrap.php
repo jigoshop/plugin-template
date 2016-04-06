@@ -1,5 +1,8 @@
 <?php
-#set( $LINKS = "${DS}links[]" )
+
+#set( $TEXTDOMAIN = $CONST_NAME.toLowerCase())
+#set( $PLUGIN_PATH = ${StringUtils.removeAndHump($TEXTDOMAIN, "_")})
+
 /**
  * Plugin Name: ${PLUGIN_NAME}
  * Plugin URI:
@@ -13,28 +16,28 @@
 // Define plugin name
 define('JIGOSHOP_${CONST_NAME}_NAME', '${PLUGIN_NAME}');
 add_action('plugins_loaded', function () {
-    load_plugin_textdomain('${textdomain}', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+    load_plugin_textdomain('jigoshop_$TEXTDOMAIN', false, dirname(plugin_basename(__FILE__)) . '/languages/');
     if (class_exists('\Jigoshop\Core')) {
         //Check version.
-        if (\Jigoshop\addRequiredVersionNotice(JIGOSHOP_${CONST_NAME}_NAME, '2.0')) {
-            return;
-        }
+        //if (\Jigoshop\addRequiredVersionNotice(JIGOSHOP_${CONST_NAME}_NAME, '2.0')) {
+        //    return;
+        //}
         //Check license.
-        ${DS}licence = new \Jigoshop\Licence(__FILE__, '${ID}', 'http://www.jigoshop.com');
-        if (!${DS}licence->isActive()) {
-            return;
-        }
+        //${DS}licence = new \Jigoshop\Licence(__FILE__, '${ID}', 'http://www.jigoshop.com');
+        //if (!${DS}licence->isActive()) {
+        //   return;
+        //}
         // Define plugin directory for inclusions
         define('JIGOSHOP_${CONST_NAME}_DIR', dirname(__FILE__));
         // Define plugin URL for assets
         define('JIGOSHOP_${CONST_NAME}_URL', plugins_url('', __FILE__));
         //Init components.
-        require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/Common.php');
+        //require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/$PLUGIN_PATH/Common.php');
         if (is_admin()) {
-            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/Admin.php');
-        } else {
-            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/PluginName/Frontend.php');
-        }
+            require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/$PLUGIN_PATH/Admin.php');
+        } //else {
+        //require_once(JIGOSHOP_${CONST_NAME}_DIR . '/src/Jigoshop/Extension/$PLUGIN_PATH/Frontend.php');
+        //}
     } elseif (class_exists('jigoshop')) {
         //Check version.
         if (jigoshop_add_required_version_notice(JIGOSHOP_${CONST_NAME}_NAME, '1.17')) {
@@ -55,18 +58,8 @@ add_action('plugins_loaded', function () {
         add_action('admin_notices', function () {
             echo '<div class="error"><p>';
             printf(__('%s requires Jigoshop plugin to be active. Code for plugin %s was not loaded.',
-                'plugin_textdomain'), JIGOSHOP_${CONST_NAME}_NAME, JIGOSHOP_${CONST_NAME}_NAME);
+                'jigoshop_$TEXTDOMAIN'), JIGOSHOP_${CONST_NAME}_NAME, JIGOSHOP_${CONST_NAME}_NAME);
             echo '</p></div>';
         });
     }
 });
-// this code need to be moved to the initial admin class
-if (is_admin()) {
-    add_filter('plugin_action_links_' . plugin_basename(__FILE__), function (${DS}links) {
-        ${LINKS} = '<a href="https://www.jigoshop.com/documentation/plugin_name" target="_blank">Documentation</a>';
-        ${LINKS} = '<a href="https://www.jigoshop.com/support/" target="_blank">Support</a>';
-        ${LINKS} = '<a href="https://wordpress.org/support/view/plugin-reviews/jigoshop#postform" target="_blank">Rate Us</a>';
-        ${LINKS} = '<a href="https://www.jigoshop.com/product-category/extensions/" target="_blank">More plugins for Jigoshop</a>';
-        return ${DS}links;
-    });
-}
