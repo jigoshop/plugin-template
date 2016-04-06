@@ -10,8 +10,8 @@
  * Version: 1.0
  * Author: Jigoshop
  * Author URI: https://www.jigoshop.com/
- * Init File Version: 1.3
- * Init File Date: 01.04.2016
+ * Init File Version: 1.4
+ * Init File Date: 05.04.2016
  */
 // Define plugin name
 define('JIGOSHOP_${CONST_NAME}_NAME', '${PLUGIN_NAME}');
