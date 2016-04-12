@@ -5,7 +5,7 @@
  * Description:
  * Version: 1.0
  * Author: Jigoshop
- * Author URI: https://www.jigoshop.com/
+ * Author URI: https://www.jigoshop.com
  * Init File Version: 1.3
  * Init File Date: 01.04.2016
  */
