@@ -4,9 +4,7 @@
 #set( $DOC = $TEXTDOMAIN.replace("_","-"))
 #set( $NAMESPACE_SUFFIX = ${StringUtils.removeAndHump($TEXTDOMAIN, "_")})
 <?php
-
 namespace Jigoshop\Extension$ESCAPER$NAMESPACE_SUFFIX;
-
 
 class Admin
 {
@@ -31,16 +29,11 @@ class Admin
      * @return array
      */
     public function actionLinks(${DS}links)
-{
-
-
-$LINKS = '<a href="https://www.jigoshop.com/documentation/$DOC" target="_blank">Documentation</a>';
-$LINKS = '<a href="https://www.jigoshop.com/support/" target="_blank">Support</a>';
-$LINKS = '<a href="https://wordpress.org/support/view/plugin-reviews/jigoshop#$postform" target="_blank">Rate Us</a>';
-$LINKS = '<a href="https://www.jigoshop.com/product-category/extensions/" target="_blank">More plugins for Jigoshop</a>';
-return ${DS}links;
-
-
+	{
+		$LINKS = '<a href="https://www.jigoshop.com/documentation/$DOC" target="_blank">Documentation</a>';
+		$LINKS = '<a href="https://www.jigoshop.com/support/" target="_blank">Support</a>';
+		$LINKS = '<a href="https://wordpress.org/support/view/plugin-reviews/jigoshop#$postform" target="_blank">Rate Us</a>';
+		$LINKS = '<a href="https://www.jigoshop.com/product-category/extensions/" target="_blank">More plugins for Jigoshop</a>';
+		return ${DS}links;
     }
-
 }
