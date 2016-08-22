@@ -6,8 +6,8 @@
  * Version: 1.0
  * Author: Jigoshop
  * Author URI: https://www.jigoshop.com
- * Init File Version: 1.3
- * Init File Date: 01.04.2016
+ * Init File Version: 1.5
+ * Init File Date: 22.08.2016
  */
 // Define plugin name
 define('JIGOSHOP_PLUGIN_NAME_NAME', 'Plugin Name');
@@ -19,7 +19,7 @@ add_action('plugins_loaded', function () {
             return;
         }
         //Check license.
-        $licence = new \Jigoshop\Licence(__FILE__, '13190', 'http://www.jigoshop.com');
+        $licence = new \Jigoshop\Licence(__FILE__, '111111', 'http://www.jigoshop.com');
         if (!$licence->isActive()) {
             return;
         }
@@ -32,7 +32,7 @@ add_action('plugins_loaded', function () {
         if (is_admin()) {
             require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/Jigoshop/Extension/PluginName/Admin.php');
         } else {
-            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/Jigoshop/Extension/PluginName/Frontend.php');
+            require_once(JIGOSHOP_PLUGIN_NAME_DIR . '/src/Jigoshop/Extension/PluginName/Shop.php');
         }
     } elseif (class_exists('jigoshop')) {
         //Check version.
@@ -40,7 +40,7 @@ add_action('plugins_loaded', function () {
             return;
         }
         //Check license.
-        $licence = new jigoshop_licence_validator(__FILE__, '13190', 'http://www.jigoshop.com');
+        $licence = new jigoshop_licence_validator(__FILE__, '111111', 'http://www.jigoshop.com');
         if (!$licence->is_licence_active()) {
             return;
         }
